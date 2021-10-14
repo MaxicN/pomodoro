@@ -1,37 +1,10 @@
-body {/* si  están en light */
-  --titulos-color: #264F73;
-  --numeros-color: #3A6D8C;
-  --icon: "🌞";
-  --text-color: #27273f;
-  --bkg-color: rgb(230, 230, 230);
-}
-body.dark-theme {
-  --titulos-color: #ee1a61; 
-  --numeros-color: #b3bec5;
-  --icon: "🌑";
-  --text-color: #ccc6c8;
-  --bkg-color: #07070D;
-}
 
-@media (prefers-color-scheme: dark) {
-  /* si ya están en dark */
-  body {
-    --titulos-color: #ee1a61;  
-      --numeros-color: #b3bec5;
-      --icon: "🌑";
-      --text-color: #ccc6c8;
-      --bkg-color: #07070D;
-  }
-  body.light-theme {
-    --titulos-color: #264F73;
-    --numeros-color: #3A6D8C;
-    --icon: "🌞";
-    --text-color: #27273f;
-    --bkg-color: rgb(230, 230, 230);
-  }
+:root {
+  --titulos-color: #11999E; 
+  --numeros-color: #EEEEEE;
+  --text-color: #EEEEEE;
+  --bkg-color: #222831;
 }
-
-/* fin dark theme */
 
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -48,13 +21,8 @@ p{
   padding: 0;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 body {
-  margin-top: 5%;
+  margin-top: 3%;
   background: var(--bkg-color);
   display: flex;
 
@@ -64,9 +32,10 @@ body {
   margin: 0 auto;
   text-align: center;
 }
-
+.nomostrar { display : none; }
 h1 {
   font-weight: normal;
+  font-size: 4vw;
   letter-spacing: .125rem;
   text-transform: uppercase;
   color: var(--titulos-color);
@@ -98,7 +67,7 @@ a:hover{
 li {
   display: inline-block;
   color: var(--text-color);
-  font-size: 1.5em;
+  font-size: 3vw;
   font-family: 'Oswald', sans-serif;
   list-style-type: none;
   padding: 1em;
@@ -131,64 +100,125 @@ li span {
   fill: var(--text-color);
   cursor:pointer;
 }
-/*BOTON SWITCH PARA CAMBIAR MODO OSCURO */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--numeros-color);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: var(--icon);
-  height: 25px;
-  width: 25px;
-  left: 5px;
-  bottom: 5px;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-/* sliders redondos */
-.slider.round {
-  border-radius: 55px;
-}
-
-.slider.round:before {
-  border-radius: 40%;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(25px);
-  -ms-transform: translateX(25px);
-  transform: translateX(25px);
-}
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 1px;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--numeros-color); 
+  background: var(--bkg-color); 
   border-radius: 155px;
 }
 audio {
   display: none;
 }
+
+/*COMIENZO MENU */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(7, 7, 7, 0.726);
+  backdrop-filter: blur(15px);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  text-align:center;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/*BOTON AJUSTES */
+.ajustes{
+  font-size:30px;
+  cursor:pointer; 
+  position: fixed; 
+  bottom:5%; 
+  right: 5%;
+  color: var(--text-color);
+}
+/* COLORES */
+.negro {
+  width: 70px; 
+  height: 70px; 
+  border-radius: 100%;
+  border-color: #ffffff;
+  background: #222831;
+  color: #FFFFFF;
+  }
+  .azul{
+  width: 70px; 
+  height: 70px; 
+  border-radius: 100%;
+  border-color: #ffffff;
+  background: #14279B;
+  color: #FFFFFF;
+  }
+  .verde{
+  width: 70px; 
+  height: 70px; 
+  border-radius: 100%;
+  border-color: #ffffff;
+  background: #2E5A1C;
+  color: #FFFFFF;
+  }
+.rojo{
+width: 70px; 
+height: 70px; 
+border-radius: 100%;
+border-color: #ffffff;
+background: #51050F;
+color: #FFFFFF;            
+}
+.rosa{
+  width: 70px; 
+  height: 70px; 
+  border-radius: 100%;
+  border-color: #ffffff;
+  background: #FFC7C7;
+  color: #FFFFFF;            
+  }
+  .amarillo{
+    width: 70px; 
+    height: 70px; 
+    border-radius: 100%;
+    border-color: #ffffff;
+    background: #F0A500;
+    color: #FFFFFF;            
+    }
+  .blanco{
+    width: 70px; 
+    height: 70px; 
+    border-radius: 100%;
+    border-color: black;
+    background: #D4ECDD;
+    color: #000000;            
+    }
+    

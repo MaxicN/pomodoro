@@ -9,11 +9,12 @@ var cc = document.getElementById('counter');
 var startTimer;
 var cambio = 0; // de trabajo(1) y descanso(0) 
 var contadorDescanso = 1;
-
+var primerCaso = 0;
 // boton iniciar-pausar
 iniciar.addEventListener('click', function(){
     if(startTimer === undefined){ // iniciar
         startTimer = setInterval(timer, 1000)
+        cc.innerText = 1;
         document.getElementById("iniciar").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-pause-fill botones" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg>';
         Estado();
     } else { //pausa
@@ -22,22 +23,36 @@ iniciar.addEventListener('click', function(){
         document.getElementById("iniciar").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-play-fill botones" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>'; // boton;
         Estado();
     }
+    if(primerCaso === 0){
+        if (Notification.permission === "granted") {
+            // Si acepta notificaciones
+            var notification = new Notification("Hora de Trabajar!");
+          }
+          // Si no acepta notificaciones
+          else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(function (permission) {
+              // Si acepta notificaciones 
+              if (permission === "granted") {
+                var notification = new Notification("Hora de Trabajar!");
+              }
+            });
+          }
+          primerCaso = 1;
+    }
 })
 
 // boton resetear
 reset.addEventListener('click', function(){
     stopInterval()
     wm.innerText = 25;
-    document.getElementById('counter').innerText = 1;
+    document.getElementById('counter').innerText = 0;
     document.getElementById("iniciar").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-play-fill botones" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>'; // boton
     ws.innerText = "00";
     contadorDescanso = 1; // volver al estado inicial
-    document.getElementById("abcde").innerHTML = contadorDescanso;
     startTimer = undefined;
-})
-reset.addEventListener('click', function(){
     document.getElementById("trabajo").innerHTML = "Inicio";
-    document.title = "Técnica de Pomodoro";
+    document.title = "PomoPomo - Técnica de Pomodoro";
+    primerCaso = 0;
 })
 terminar.addEventListener('click', function(){
     stopInterval()
@@ -70,6 +85,7 @@ function timer(){
     if(wm.innerText == 0 && ws.innerText == 0 && cambio == 0){
         document.getElementById("trabajo").innerHTML = "Descanso";
         document.title = "Hora de Descansar"
+        var notification = new Notification("Hora de Descansar!");
         wm.innerText = 5;
         ws.innerText = "00";
         cambio = 1;
@@ -78,13 +94,16 @@ function timer(){
         if (contadorDescanso == 4){
             document.getElementById("trabajo").innerHTML = "Descanso prolongado";
             document.title = "Hora de Descansar"
+            var notification = new Notification("Hora de Descansar!");
             wm.innerText = 30;
             ws.innerText = "00";
             cambio = 1;
             contadorDescanso = -1; // volver al estado inicial
         }else{
         document.getElementById("trabajo").innerHTML = "Trabajo";
+        notifyMe();
         document.title = "Hora de Trabajar";
+        var notification = new Notification("Hora de Trabajar!");
         wm.innerText = 25;
         ws.innerText = "00";
         cambio = 0;
@@ -103,30 +122,19 @@ function stopInterval(){
     clearInterval(startTimer);
 }
 
-
-//MODO OSCURO
-const btn = document.querySelector(".btn-toggle");
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme == "dark") {
-  document.body.classList.toggle("dark-theme");
-} else if (currentTheme == "light") {
-  document.body.classList.toggle("light-theme");
-}
-
-btn.addEventListener("click", function () {
-  if (prefersDarkScheme.matches) {
-    document.body.classList.toggle("light-theme");
-    var theme = document.body.classList.contains("light-theme")
-      ? "light"
-      : "dark";
-  } else {
-    document.body.classList.toggle("dark-theme");
-    var theme = document.body.classList.contains("dark-theme")
-      ? "dark"
-      : "light";
+function showHide() {
+    var x = document.getElementById("botonesPlayStop");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
-  localStorage.setItem("theme", theme);
-});
 
+// FUNCION DE NOTIFICACIONES
+function notifyMe() {
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+      alert("Este navegador no acepta notificaciones :(");
+    }
+  }

@@ -8,37 +8,61 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Técnica de Pomodoro</title>
+    <link rel="shortcut icon" href="img/PomoPomoLogo.png" type="image/x-icon">
+    <title>PomoPomo - Técnica de Pomodoro</title>
 </head>
 <body>
+<!-- MENU ASIDE IZQUIERDA -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+    <li><h1>Editar color</h1></li><br>
+    <button id="negro" class="negro"></button>  
+    <button id="azul" class="azul"></button>  
+    <button id="verde" class="verde"></button>  
+    <button id="rojo" class="rojo"></button>
+    <button id="rosa" class="rosa"></button>
+    <button id="amarillo" class="amarillo"></button>
+    <button id="blanco" class="blanco"></button><br> 
+    <li><h1>Música ambiental</h1></li><br>
+    </ul>
+    <audio id="audio" preload="auto" loop tabindex="0" controls="" >
+      <source src="">
+    </audio>
+    <ul id="playlist">
+      <li class="active"><a href="audio/lluvia.wav"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cloud-drizzle-fill" viewBox="0 0 16 16"><path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973z"/></svg></a></li>
+      <li><a href="audio/rio.mp3"><svg xmlns="http://www.w3.org/2000/svg"  width="35"  height="35" fill="white" viewBox="0 0 1280.000000 1280.000000"><metadata>Created by potrace 1.15, written by Peter Selinger 2001-2017</metadata><g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M11241 8109 c-271 -58 -564 -218 -911 -498 -368 -296 -560 -417 -825 -516 -295 -111 -619 -116 -920 -13 -249 84 -471 218 -796 479 -80 65 -195 151 -255 192 -567 389 -1112 468 -1676 241 -220 -88 -427 -217 -703 -439 -306 -246 -562 -400 -795 -479 -271 -91 -558 -90 -827 5 -239 85 -461 223 -828 518 -377 302 -681 456 -1010 508 -131 21 -373 13 -496 -16 -271 -62 -582 -223 -863 -446 -47 -38 -86 -72 -86 -77 0 -11 280 -428 288 -428 2 0 48 33 101 74 507 388 882 458 1315 248 160 -78 291 -166 521 -351 236 -190 430 -320 627 -421 223 -114 394 -172 618 -211 106 -19 383 -16 500 4 385 66 763 260 1215 622 209 168 346 260 490 330 203 99 352 135 552 135 335 0 615 -123 1023 -451 424 -340 748 -519 1105 -609 164 -42 280 -53 483 -48 286 8 495 64 797 213 206 101 411 236 635 416 227 183 346 270 455 335 292 171 519 202 786 104 144 -52 333 -168 522 -320 48 -38 91 -70 95 -70 4 0 72 97 152 216 l145 215 -25 20 c-364 290 -605 428 -885 506 -129 36 -387 42 -524 12z"/><path d="M11276 6634 c-219 -40 -480 -162 -741 -348 -38 -28 -146 -111 -240 -186 -364 -290 -581 -420 -841 -506 -158 -51 -259 -68 -424 -68 -228 0 -404 42 -640 155 -201 97 -336 185 -590 389 -248 198 -368 278 -571 379 -508 253 -993 254 -1504 2 -175 -86 -336 -192 -530 -347 -296 -237 -424 -323 -620 -419 -238 -117 -407 -159 -630 -158 -212 1 -375 42 -600 153 -188 92 -343 198 -635 433 -341 276 -648 436 -960 503 -118 26 -389 26 -514 1 -214 -43 -462 -152 -686 -302 -167 -111 -295 -213 -294 -233 0 -10 64 -111 141 -225 l141 -208 34 29 c18 16 76 60 128 99 477 349 841 406 1266 198 145 -71 280 -163 489 -330 198 -159 350 -268 490 -352 600 -360 1161 -407 1751 -145 238 106 469 256 788 514 194 157 399 283 566 347 256 99 535 106 795 20 202 -67 391 -181 670 -405 322 -258 636 -446 905 -541 708 -251 1374 -75 2155 569 280 231 474 351 665 413 123 40 283 46 415 16 167 -39 385 -161 619 -347 l105 -83 146 215 c171 252 172 209 -8 346 -398 303 -726 440 -1051 437 -61 0 -147 -7 -190 -15z"/><path d="M11300 5155 c-299 -49 -631 -227 -1015 -545 -364 -302 -694 -480 -1005 -546 -41 -8 -131 -18 -200 -21 -393 -18 -784 146 -1260 527 -277 222 -434 327 -626 416 -669 310 -1303 197 -1990 -358 -247 -199 -344 -268 -517 -368 -359 -206 -697 -266 -1029 -181 -275 69 -526 211 -878 496 -413 334 -692 486 -1024 557 -143 30 -389 30 -529 0 -230 -50 -457 -152 -687 -306 -139 -94 -290 -211 -290 -225 0 -6 271 -415 285 -429 2 -2 46 30 98 71 258 202 483 316 705 358 38 7 112 10 195 6 160 -6 257 -31 427 -113 148 -71 273 -155 487 -326 195 -157 311 -242 431 -317 310 -194 593 -304 879 -342 131 -17 399 -6 528 21 369 78 726 268 1155 614 319 258 548 383 812 442 101 23 345 23 448 0 119 -26 196 -54 325 -116 146 -70 275 -156 460 -304 333 -267 541 -400 801 -512 537 -233 1046 -217 1589 51 241 118 397 222 702 466 357 286 563 402 781 440 87 15 238 6 332 -21 157 -45 370 -168 585 -338 55 -44 103 -78 107 -76 3 2 70 99 148 215 138 205 142 212 124 229 -45 43 -229 180 -339 253 -135 89 -342 194 -455 231 -178 58 -396 78 -560 51z"/></g></svg></a></li>
+      <li><a href="audio/olas.mp3"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 1280.000000 640.000000" ><metadata>Created by potrace 1.15, written by Peter Selinger 2001-2017</metadata><g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M2255 5455 c-349 -54 -575 -194 -687 -423 -42 -86 -43 -89 -43 -192 0 -93 3 -110 25 -150 25 -43 80 -90 107 -90 10 0 11 5 3 19 -30 58 19 117 125 151 273 89 582 -95 745 -443 193 -412 184 -908 -26 -1401 -245 -574 -791 -1128 -1529 -1554 -235 -135 -620 -313 -873 -402 -51 -18 -91 -34 -90 -35 2 -1 826 1 1833 4 1007 4 1832 4 1835 1 3 -3 790 -3 1750 0 960 3 1747 2 1750 -1 3 -3 896 -2 1985 2 1089 4 2341 8 2782 8 754 1 802 2 807 19 3 9 13 60 23 112 21 119 24 457 4 610 -152 1198 -981 2662 -1897 3351 -282 212 -571 347 -854 399 -147 28 -415 37 -560 21 -364 -43 -615 -190 -732 -428 -42 -87 -43 -90 -43 -193 0 -93 3 -110 25 -150 25 -43 80 -90 107 -90 10 0 11 5 3 19 -30 57 18 115 125 151 288 98 618 -120 775 -513 95 -238 129 -487 100 -742 -50 -438 -247 -865 -576 -1249 -58 -69 -69 -77 -75 -60 -4 10 -26 81 -49 158 -255 867 -808 1797 -1421 2391 -517 501 -978 715 -1539 715 -366 0 -637 -89 -816 -267 -185 -184 -227 -450 -90 -570 50 -45 65 -43 59 6 -7 51 6 72 65 104 75 41 157 56 245 47 145 -17 256 -72 368 -184 206 -204 332 -548 332 -901 -1 -542 -243 -1087 -690 -1557 l-93 -96 -10 41 c-42 163 -88 321 -127 437 -276 814 -766 1622 -1328 2185 -402 404 -817 649 -1225 726 -149 27 -470 35 -605 14z"/></g></svg></a></li>
+      <li><a href="audio/cafe.mp3"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-cup-fill" viewBox="0 0 16 16"><path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8z"/></svg></a></li>
+      <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-stop-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 5A1.5 1.5 0 0 0 5 6.5v3A1.5 1.5 0 0 0 6.5 11h3A1.5 1.5 0 0 0 11 9.5v-3A1.5 1.5 0 0 0 9.5 5h-3z"/></svg></a></li>
+    </ul>
+    <script src="js/musica.js"></script>  
+  </div>
+  <span class="ajustes" onclick="openNav()"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+  </svg></span>
+<script src="js/menu.js"></script>
+<!-- MENU ASIDE IZQUIERDA -->
+<!-- CONTAINER -->
   <div class="container" id="container">
     <h1>Técnica de Pomodoro</h1>
     <h1 id="trabajo">Inicio</h1>
     <hr>
     <div id="countdown">
-      <ul>
+      
         <li><span id="minutosTrabajo">25</span>Minutos</li>
         <li><span id="segundosTrabajo">00</span>Segundos</li>
-        <li><span id="counter">1</span>Pomodoro(s)</li>
-      </ul> 
+        <li><span id="counter">0</span>Pomodoro(s)</li>
+      
       <div class="botones">
         <ul id="botonesPlayStop">
-          <li><svg id="iniciar" xmlns="http://www.w3.org/2000/svg" width="70" height="70"  class="bi bi-play-fill botones" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg></li>
+          <li><svg id="iniciar" xmlns="http://www.w3.org/2000/svg" width="85" height="85"  class="bi bi-play-fill botones" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg></li>
           <li onclick="showHide()"><a id="terminar" data-bs-toggle="collapse" href="#compartir" role="button" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-stop-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3z"/>
           </svg></a></li>
         </ul> 
-        <script>
-          function showHide() {
-          var x = document.getElementById("botonesPlayStop");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-        </script>
         <div class="collapse" id="compartir">
           <div class="card container-musica">
             <p>Gran intento, Comparte tus resultados!</p>
@@ -55,57 +79,10 @@
         </div>
       </div>
     </div>
+    <script src="js/main.js"></script>
 <!-- --------------- COUNTDOWN ---------------- -->
-<!-- ----------------- SWITCH ----------------- -->
-    <hr>
-    <div class="switcher">
-      <label class="switch">
-        <input type="checkbox" checked><span class="btn-toggle slider round"></span>
-      </label>
-    </div>
-    <script src="js/main.js"></script> 
-    <hr>
-<!-- ----------------- SWITCH ----------------- -->
-<!-- ----------------- SONIDO ----------------- -->
-    <div class="sonidos">
-      <a data-bs-toggle="collapse" href="#musica" role="button" aria-expanded="false">Música ambiental</a>
-    </div>
-    <div class="collapse" id="musica">
-      <div class="card container-musica">
-        <audio id="audio" preload="auto" loop tabindex="0" controls="" >
-          <source src="https://sonidosmp3.net/wp-content/uploads/2020/11/rain_sound.mp3">
-        </audio>
-        
-        <ul id="playlist">
-                <li class="active">
-                   <a href="https://sonidosmp3.net/wp-content/uploads/2020/11/rain_sound.mp3">
-                     Lluvia
-                   </a>
-                </li>
-                <li>
-                    <a href="https://sonidosmp3.net/wp-content/uploads/2020/10/Water-Stream-Rapids.mp3">
-                        Río
-                    </a>
-                </li>
-                <li>
-                    <a href="https://sonidosmp3.net/wp-content/uploads/2020/10/ocean-edge.mp3">
-                        Playa
-                    </a>
-                </li>
-                <li>
-                    <a href="https://cdn.videvo.net/videvo_files/audio/premium/audio0150/watermarked/RestaurantCafe IN08_83_3_preview.mp3">
-                        Cafetería
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-stop-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.5 5A1.5 1.5 0 0 0 5 6.5v3A1.5 1.5 0 0 0 6.5 11h3A1.5 1.5 0 0 0 11 9.5v-3A1.5 1.5 0 0 0 9.5 5h-3z"/></svg>
-                    </a>
-                </li>
-            </ul>
-      </div>
-    </div>
-        <script src="js/musica.js"></script>  
-  </div>  <!--container -->
+  </div>  
+  <!--container -->
+
 </body>
 </html>
